@@ -5,6 +5,7 @@
 #ifndef DUTCHNARY_WORD_H
 #define DUTCHNARY_WORD_H
 #include <string>
+#include <fstream>
 
 
 class Word {
@@ -56,6 +57,54 @@ public:
         return picture;
     }
 
+    int readWord(std::string word){
+
+        std::string location_file = DataBase;
+        std::ifstream file(location_file);
+        if(file.is_open())
+        {
+            std::string line;
+            while(std::getline(file,line)){
+                printf("%s", line.c_str());
+            }
+            file.close();
+        }
+    return 0;
+    }
+
+    int writeWord(std::string word){
+        std::string location_file = DataBase;
+        std::fstream file;
+        file.open(location_file,std::ios_base::app);
+        if (file.is_open())
+            file.write(word.data(),word.size());
+        return 0;
+    }
+
+    bool isEqualWord(std::string word1, std::string word2){
+        if (word1 == word2)
+            return true;
+        else
+            return false;
+
+    }
+
+    int searchWord(std::string word){
+        std::string location_file = DataBase;
+        std::ifstream file(location_file);
+        if(file.is_open())
+        {
+            std::string line;
+            while(std::getline(file,line)){
+                if (isEqualWorld(line,word)){
+                  return 0;
+                }
+                printf("%s", line.c_str());
+            }
+            file.close();
+        }
+        return -1;
+    }
 };
 
 

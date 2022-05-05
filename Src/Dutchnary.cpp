@@ -9,5 +9,7 @@ int main() {
 
     std::cout << first.getDutch() << " " << second.getDutch()  << std::endl;
     std::cout << first.getMeaning() << " " << second.getMeaning()  << std::endl;
+
+
     return 0;
 }
