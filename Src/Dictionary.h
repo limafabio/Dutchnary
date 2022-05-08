@@ -10,13 +10,12 @@
 class Dictionary {
 
 public:
-    std::vector<Word> words;
+  std::vector<Word> words;
 
-    std::vector<Word> readWords();
-    int writeWords(std::vector<Word>);
-    Word searchDutchWord(std::string dutch);
+  void readWords();
+  int writeWords();
+  Word searchDutchWord(std::string dutch);
 
 };
-
 
 #endif //DUTCHNARY_DICTIONARY_H
