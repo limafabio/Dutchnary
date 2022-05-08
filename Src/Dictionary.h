@@ -4,8 +4,8 @@
 
 #ifndef DUTCHNARY_DICTIONARY_H
 #define DUTCHNARY_DICTIONARY_H
-#include<vector>;
-#include"Word.h";
+#include<vector>
+#include"Word.h"
 
 class Dictionary {
 

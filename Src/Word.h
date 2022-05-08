@@ -14,19 +14,22 @@ public:
     std::string dutch;
     char *picture;
 
-    void setId(const int i);
+    void setId(int i);
     void setType(const std::string &t);
     void setMeaning(const std::string &m);
     void setSound(const std::string &s);
     void setDutch(const std::string &d);
     void setPicture(char *p);
 
-    int getId();
-    std::string getType();
-    std::string getMeaning();
-    std::string getSound();
-    std::string getDutch();
-    char *getPicture();
+    int getId() const;
+    const std::string & getType() const;
+    const std::string & getMeaning() const;
+    const std::string & getSound() const;
+    const std::string & getDutch() const;
+    char *getPicture() const;
+
+    std::string convertToString();
+    Word convertToWord(std::string stream);
 
 };
 

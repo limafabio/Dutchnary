@@ -26,21 +26,50 @@
     }
 
     //Getter
-    int Word::getId() {
+    int Word::getId() const {
         return id;
     }
-    std::string Word::getType() {
+    const std::string & Word::getType() const {
         return type;
     }
-    std::string Word::getMeaning() {
+    const std::string & Word::getMeaning() const {
         return meaning;
     }
-    std::string Word::getSound() {
+    const std::string & Word::getSound() const {
         return sound;
     }
-    std::string Word::getDutch() {
+    const std::string & Word::getDutch() const {
         return dutch;
     }
-    char * Word::getPicture() {
+    char * Word::getPicture() const {
         return picture;
     }
+
+    std::string Word::convertToString(){
+        std::string stream;
+        stream = std::to_string(getId()) + "|" + getType() + "|" + getMeaning() + "|" + getSound() + "|" + getDutch() + "|" + getPicture();
+        return stream;
+    }
+
+    Word Word::convertToWord(std::string stream) {
+        Word obj;
+        int index = stream.find("|");
+        std::string id = stream.substr(0,index);
+        obj.setId(std::stoi(id));
+        int index2 = stream.find("|",index);
+        obj.setType(stream.substr(index,index2));
+        index = index2;
+        index2 = stream.find("|",index);
+        obj.setMeaning(stream.substr(index,index2));
+        index = index2;
+        index2 = stream.find("|",index);
+        obj.setSound(stream.substr(index,index2));
+        index = index2;
+        index2 = stream.find("|",index);
+        obj.setDutch(stream.substr(index,index2));
+        index = index2;
+        index2 = stream.find("|",index);
+
+        return obj;
+    }
+

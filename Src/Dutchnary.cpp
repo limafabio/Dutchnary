@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Word.h"
+#include <Word.h>
 int main() {
     Word first, second;
     first.setMeaning("hello");
