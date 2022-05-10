@@ -13,8 +13,7 @@ void Dictionary::readWords() {
   if (file.is_open()) {
     std::string line;
     while (std::getline(file, line)) {
-      //TODO convert lines in object word
-      printf("%s", line.c_str());
+      //printf("%s", line.c_str());
       words.emplace_back(line);
     }
     file.close();
@@ -26,7 +25,6 @@ int Dictionary::writeWords() {
   std::string location_file = DataBase;
   std::fstream file;
   file.open(location_file, std::ios::out);
-  //TODO convert word in line, search a method to salve in format that can export to database
   for (auto &word : words) {
     if (file.is_open()) {
       file << word.convertToString() << std::endl;

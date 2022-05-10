@@ -1,0 +1,1 @@
+set(JSON_INCLUDES "${CMAKE_CURRENT_SOURCE_DIR}/External/Json")

@@ -3,7 +3,12 @@
 #include <Dictionary.h>
 
 int main() {
-  
+  int n;
+  std::cout << "Write how much words is salve" << std::endl;
+  std::cin >> n;
+  for (int i = 0; i < n; i++) {
+
+  }
   Word first, second;
   first.setId(1);
   first.setType("substantive");
