@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.22)
-project(Dutchnary)
+project(Dutchnary CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/External")
 include(Catch2)
-include(Json)
+include(json11)
 
 set(DUTCHNARY_SOURCES
         Src/Word.cpp
@@ -16,7 +16,8 @@ set(DUTCHNARY_SOURCES
         Src/Multilingual.h)
 
 add_library(LibDutch STATIC ${DUTCHNARY_SOURCES})
-target_include_directories(LibDutch PUBLIC ${JSON_INCLUDES})
+#target_include_directories(LibDutch PUBLIC ${JSON11_INCLUDES})
+#target_link_libraries(LibDutch ${JSON11_LIBRARIES})
 
 target_compile_definitions(LibDutch PUBLIC -DDataBase="${CmakeDataBase}")
 
@@ -28,10 +29,10 @@ add_executable(Dutchnary Src/Dutchnary.cpp)
 set(DUTCHNARY_INCLUDE_DIR
         ${CMAKE_CURRENT_SOURCE_DIR}/Src)
 
-target_include_directories(Dutchnary PUBLIC ${DUTCHNARY_INCLUDE_DIR} ${JSON_INCLUDES})
+#target_include_directories(Dutchnary PUBLIC ${DUTCHNARY_INCLUDE_DIR} ${JSON11_INCLUDES})
+target_include_directories(Dutchnary PUBLIC ${DUTCHNARY_INCLUDE_DIR})
 
 target_link_libraries(Dutchnary LibDutch)
-
 
 add_subdirectory(Tests)
 

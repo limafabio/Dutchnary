@@ -1,14 +1,14 @@
 #include <iostream>
 #include <Word.h>
 #include <Dictionary.h>
+#include <Multilingual.h>
 
 int main() {
   int n;
-  std::cout << "Write how much words is salve" << std::endl;
-  std::cin >> n;
-  for (int i = 0; i < n; i++) {
 
-  }
+  std::cout << Multilingual::English("header") << std::endl;
+  std::cout << Multilingual::Dutch("header") << std::endl;
+
   Word first, second;
   first.setId(1);
   first.setType("substantive");
@@ -23,9 +23,8 @@ int main() {
   Dictionary dict;
   dict.words.emplace_back(first);
   dict.words.emplace_back(second);
-  dict.writeWords();
-  dict.readWords();
+  //dict.writeWords();
+  //dict.readWords();
 
-  std::cout << "Hallo";
   return 0;
 }
