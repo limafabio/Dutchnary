@@ -2,12 +2,40 @@
 #include <Word.h>
 #include <Dictionary.h>
 #include <Multilingual.h>
+#include <cstdlib>
+
+void clear_screen() {
+#ifdef WINDOWS
+  std::system("cls");
+#else
+  std::system("clear");
+#endif
+}
+
+void optionSelect(int option) {
+  switch (option) {
+  case 1: Multilingual::showInsertPanel();
+    break;
+  case 2: Multilingual::showUpdatePanel();
+    break;
+  case 3: Multilingual::showDeletePanel();
+    break;
+  case 4: Multilingual::showQuizPanel();
+    break;
+  case 5: Multilingual::showOptionsPanel();
+    break;
+  default: Multilingual::showErrorInput(option);
+
+  }
+}
 
 int main() {
-  int n;
+  int n, option;
 
-  std::cout << Multilingual::English("header") << std::endl;
-  std::cout << Multilingual::Dutch("header") << std::endl;
+  do {
+    Multilingual::showEnglishPainel();
+    std::cin >> option;
+  } while (6 != option);
 
   Word first, second;
   first.setId(1);
