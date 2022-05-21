@@ -13,6 +13,7 @@ public:
   std::vector<Word> words;
 
   void readWords();
+  void insertWord(Word wordToInsert);
   int writeWords();
   Word searchDutchWord(std::string dutch);
 

@@ -72,6 +72,20 @@ Word::Word(std::string stream) {
   index2 = stream.find("|", index);
 
 }
+void Word::toLowerWord() {
+  std::for_each(meaning.begin(), meaning.end(), [](char &c) {
+    c = ::tolower(c);
+  });
+  std::for_each(dutch.begin(), dutch.end(), [](char &c) {
+    c = ::tolower(c);
+  });
+  std::for_each(sound.begin(), sound.end(), [](char &c) {
+    c = ::tolower(c);
+  });
+  std::for_each(type.begin(), type.end(), [](char &c) {
+    c = ::tolower(c);
+  });
+}
 Word::Word() = default;
 
 

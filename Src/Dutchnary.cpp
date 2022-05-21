@@ -33,7 +33,7 @@ int main() {
   int n, option;
 
   do {
-    Multilingual::showEnglishPainel();
+    Multilingual::showPanel();
     std::cin >> option;
   } while (6 != option);
 

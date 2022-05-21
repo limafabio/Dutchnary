@@ -20,6 +20,7 @@ public:
   void setSound(const std::string &s);
   void setDutch(const std::string &d);
   void setPicture(char *p);
+  void toLowerWord();
 
   int getId() const;
   const std::string &getType() const;
