@@ -23,23 +23,32 @@ Multilingual::Multilingual() {
   phraseToShow["ENGLISH"]["panelOption4"] = "4 - Quiz Random";
   phraseToShow["ENGLISH"]["panelOption5"] = "5 - Options";
   phraseToShow["ENGLISH"]["panelOption6"] = "6 - Exit";
+  phraseToShow["ENGLISH"]["correct"] = "Correct answer";
+  phraseToShow["ENGLISH"]["wrong"] = "Wrong answer";
+  phraseToShow["ENGLISH"]["wrong-input"] = "Wrong input";
 
   phraseToShow["ENGLISH"]["insert-dutch"] = "Please, write the word in dutch to insert :";
   phraseToShow["ENGLISH"]["insert-type"] = "Please, write the type of word in english :";
   phraseToShow["ENGLISH"]["insert-meaning"] = "Please, write the meaning of word in english :";
   phraseToShow["ENGLISH"]["insert-sound"] = "Please, write the sound of word in english :";
+  phraseToShow["ENGLISH"]["insert-sucess"] = "Word was insert";
 
   phraseToShow["ENGLISH"]["update-dutch"] = "Please, write the word in dutch to update";
   phraseToShow["ENGLISH"]["update-field"] = "Which field do you want update ? ";
   phraseToShow["ENGLISH"]["update-meaning"] = "Please, write the word to update ";
+  phraseToShow["ENGLISH"]["update-sucess"] = "Word was update ";
 
   phraseToShow["ENGLISH"]["delete-dutch"] = "Please, write the word in dutch to delete";
   phraseToShow["ENGLISH"]["delete-meaning"] = "Please, write the meaning of the word to delete";
   phraseToShow["ENGLISH"]["delete-sound"] = "Please, write the sound of word";
+  phraseToShow["ENGLISH"]["delete-sucess"] = "Word was delete";
 
   phraseToShow["ENGLISH"]["option-0"] = "Please, choose the option to configure : ";
   phraseToShow["ENGLISH"]["option-1"] = "1 - For change the language to show the phrases. ";
   phraseToShow["ENGLISH"]["option-2"] = "2 - For change the level of the quizz. ";
+
+  phraseToShow["ENGLISH"]["quiz-language"] = "Select if you want dutch ou english word: 1- english, 2 - dutch ";
+  phraseToShow["ENGLISH"]["quiz"] = "Which meanings this world in ";
 
   phraseToShow["ENGLISH"]["option-1-1"] = "Select:  1 English 2 Dutch ";
   phraseToShow["ENGLISH"]["option-2-2"] = "Write the level of the quizz between 0 and 5";
@@ -110,16 +119,22 @@ void Multilingual::showInsertPanel() {
   std::cin >> wordToInsert.type;
   std::cout << obj->phraseToShow[language]["insert-sound"] << std::endl;
   std::cin >> wordToInsert.sound;
+  //TODO SAVE THE WORD IN CASE THE WORD DOES NOT IN DATABASE
+  std::cout << obj->phraseToShow[language]["insert-sucess"] << std::endl;
 
 }
 void Multilingual::showUpdatePanel() {
 
   Multilingual *obj = Multilingual::Instance();
   Word wordToUpdate;
+  std::string field;
+
   std::cout << obj->phraseToShow[language]["update-dutch"] << std::endl;
   std::cin >> wordToUpdate.dutch;
-  //search the word in database
   std::cout << obj->phraseToShow[language]["update-field"] << std::endl;
+  std::cin >> field;
+  //TODO SEARCH THE WORD IN DATABASE
+  std::cout << obj->phraseToShow[language]["update-sucess"] << std::endl;
 
 }
 void Multilingual::showDeletePanel() {
@@ -128,18 +143,46 @@ void Multilingual::showDeletePanel() {
   Word wordToDelete;
   std::cout << obj->phraseToShow[language]["delete-dutch"] << std::endl;
   std::cin >> wordToDelete.dutch;
-  std::cout << obj->phraseToShow[language]["delete-meaning"] << std::endl;
-  std::cin >> wordToDelete.meaning;
-  std::cout << obj->phraseToShow[language]["delete-sound"] << std::endl;
-  std::cin >> wordToDelete.sound;
+  //TODO SEARCH THE WORD IN DATABASE AND DELETE
+  std::cout << obj->phraseToShow[language]["delete-sucess"] << std::endl;
 
 }
 void Multilingual::showQuizPanel() {
+  Multilingual *obj = Multilingual::Instance();
+  int wordLanguage;
+  std::string dutchWord, englishWord;
+  Word quiz;
+
+  std::cout << obj->phraseToShow[language]["quiz-language"] << std::endl;
+  std::cin >> wordLanguage;
+  if (1 == wordLanguage) {
+    std::cout << obj->phraseToShow[language]["quiz"] + " english" << std::endl;
+    std::cin >> englishWord;
+    if (englishWord == quiz.meaning) {
+      std::cout << obj->phraseToShow[language]["correct"] << std::endl;
+    } else {
+      std::cout << obj->phraseToShow[language]["wrong"] << std::endl;
+    }
+  } else if (2 == wordLanguage) {
+    std::cout << obj->phraseToShow[language]["quiz"] + " dutch" << std::endl;
+    std::cout << dutchWord;
+    if (dutchWord == quiz.dutch) {
+      std::cout << obj->phraseToShow[language]["correct"] << std::endl;
+      //TODO DECREASE THE PRIORITY
+    } else {
+      std::cout << obj->phraseToShow[language]["wrong"] << std::endl;
+      //TODO INCREASE THE PRIORITY
+    }
+  } else {
+    std::cout << obj->phraseToShow[language]["wrong-input"] << std::endl;
+  }
 
 }
 void Multilingual::showOptionsPanel() {
 
+  Multilingual *obj = Multilingual::Instance();
   int option, config;
+
   std::cout << obj->phraseToShow[language]["option-0"] << std::endl;
   std::cout << obj->phraseToShow[language]["option-1"] << std::endl;
   std::cout << obj->phraseToShow[language]["option-2"] << std::endl;

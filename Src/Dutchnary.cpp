@@ -30,29 +30,16 @@ void optionSelect(int option) {
 }
 
 int main() {
-  int n, option;
+  int n, input;
 
   do {
+    clear_screen();
     Multilingual::showPanel();
-    std::cin >> option;
-  } while (6 != option);
+    std::cin >> input;
+    optionSelect(input);
+  } while (6 != input);
 
-  Word first, second;
-  first.setId(1);
-  first.setType("substantive");
-  first.setMeaning("hello");
-  first.setDutch("hallo");
-
-  second.setId(2);
-  second.setType("substantive");
-  second.setMeaning("world");
-  second.setDutch("wereld");
-
-  Dictionary dict;
-  dict.words.emplace_back(first);
-  dict.words.emplace_back(second);
-  //dict.writeWords();
-  //dict.readWords();
+  std::cout << "doei !! " << std::endl;
 
   return 0;
 }
