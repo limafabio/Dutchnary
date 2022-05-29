@@ -12,13 +12,8 @@ public:
 
   static Multilingual *Instance();
   static void setLanguage(std::string type);
-  static void showPanel();
-  static void showInsertPanel();
-  static void showUpdatePanel();
-  static void showDeletePanel();
-  static void showQuizPanel();
-  static void showOptionsPanel();
-  static void showErrorInput(int input);
+  static void toLowerCase(std::string word);
+  std::string showPhrases(std::string phrase);
 
 private:
 

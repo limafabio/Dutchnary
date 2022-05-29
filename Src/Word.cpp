@@ -46,10 +46,13 @@ char *Word::getPicture() const {
 }
 
 std::string Word::convertToString() {
+
   std::string stream;
+  this->toLowerWord();
   stream = std::to_string(getId()) + "|" + getType() + "|" + getMeaning() + "|" + getSound() + "|" + getDutch() + "|"
       + getPicture();
   return stream;
+
 }
 
 Word::Word(std::string stream) {
@@ -70,9 +73,11 @@ Word::Word(std::string stream) {
   setDutch(stream.substr(index, index2));
   index = index2;
   index2 = stream.find("|", index);
+  //TODO SET PICTURE
 
 }
 void Word::toLowerWord() {
+
   std::for_each(meaning.begin(), meaning.end(), [](char &c) {
     c = ::tolower(c);
   });
@@ -85,6 +90,7 @@ void Word::toLowerWord() {
   std::for_each(type.begin(), type.end(), [](char &c) {
     c = ::tolower(c);
   });
+
 }
 Word::Word() = default;
 

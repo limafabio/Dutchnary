@@ -2,6 +2,7 @@
 #include <Word.h>
 #include <Dictionary.h>
 #include <Multilingual.h>
+#include <InterfaceScreen.h>
 #include <cstdlib>
 
 void clear_screen() {
@@ -12,34 +13,20 @@ void clear_screen() {
 #endif
 }
 
-void optionSelect(int option) {
-  switch (option) {
-  case 1: Multilingual::showInsertPanel();
-    break;
-  case 2: Multilingual::showUpdatePanel();
-    break;
-  case 3: Multilingual::showDeletePanel();
-    break;
-  case 4: Multilingual::showQuizPanel();
-    break;
-  case 5: Multilingual::showOptionsPanel();
-    break;
-  default: Multilingual::showErrorInput(option);
-
-  }
-}
-
 int main() {
   int n, input;
+  Dictionary *dict = Dictionary::Instance();
+  //TODO READ THE DATABASE
+  dict->readWords();
 
   do {
     clear_screen();
-    Multilingual::showPanel();
+    InterfaceScreen::showPanel();
     std::cin >> input;
-    optionSelect(input);
+    InterfaceScreen::optionSelect(input);
   } while (6 != input);
-
-  std::cout << "doei !! " << std::endl;
-
+  
+  //TODO SAVE THE DATABASE, TEST DELETE , INSERT, UPDATE
+  std::cout << "Doei, Tot ziens in Nederlands !! " << std::endl;
   return 0;
 }

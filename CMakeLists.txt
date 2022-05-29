@@ -13,7 +13,7 @@ set(DUTCHNARY_SOURCES
         Src/Dictionary.cpp
         Src/Dictionary.h
         Src/Multilingual.cpp
-        Src/Multilingual.h)
+        Src/Multilingual.h Src/InterfaceScreen.cpp Src/InterfaceScreen.h)
 
 add_library(LibDutch STATIC ${DUTCHNARY_SOURCES})
 #target_include_directories(LibDutch PUBLIC ${JSON11_INCLUDES})

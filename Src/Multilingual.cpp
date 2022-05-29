@@ -32,11 +32,13 @@ Multilingual::Multilingual() {
   phraseToShow["ENGLISH"]["insert-meaning"] = "Please, write the meaning of word in english :";
   phraseToShow["ENGLISH"]["insert-sound"] = "Please, write the sound of word in english :";
   phraseToShow["ENGLISH"]["insert-sucess"] = "Word was insert";
+  phraseToShow["ENGLISH"]["insert-duplicate"] = "Word already insert in dictionary";
 
   phraseToShow["ENGLISH"]["update-dutch"] = "Please, write the word in dutch to update";
   phraseToShow["ENGLISH"]["update-field"] = "Which field do you want update ? ";
   phraseToShow["ENGLISH"]["update-meaning"] = "Please, write the word to update ";
   phraseToShow["ENGLISH"]["update-sucess"] = "Word was update ";
+  phraseToShow["ENGLISH"]["update-wrong"] = "Word was not update ";
 
   phraseToShow["ENGLISH"]["delete-dutch"] = "Please, write the word in dutch to delete";
   phraseToShow["ENGLISH"]["delete-meaning"] = "Please, write the meaning of the word to delete";
@@ -52,6 +54,8 @@ Multilingual::Multilingual() {
 
   phraseToShow["ENGLISH"]["option-1-1"] = "Select:  1 English 2 Dutch ";
   phraseToShow["ENGLISH"]["option-2-2"] = "Write the level of the quizz between 0 and 5";
+
+  phraseToShow["ENGLISH"]["error-1"] = "Please, write just number";
 
   phraseToShow["ENGLISH"]["option5-1"] = "English";
   phraseToShow["ENGLISH"]["option5-2"] = "Dutch";
@@ -86,6 +90,7 @@ Multilingual::Multilingual() {
 }
 
 void Multilingual::setLanguage(std::string type) {
+
   if ("ENGLISH" == type) {
     language = "ENGLISH";
   } else {
@@ -93,119 +98,26 @@ void Multilingual::setLanguage(std::string type) {
   }
 
 }
+std::string Multilingual::showPhrases(std::string key) {
 
-void Multilingual::showPanel() {
-
+  std::string phrase;
   Multilingual *obj = Multilingual::Instance();
-  std::cout << obj->phraseToShow[language]["header"] << std::endl;
-  std::cout << obj->phraseToShow[language]["panelOption1"] << std::endl;
-  std::cout << obj->phraseToShow[language]["panelOption2"] << std::endl;
-  std::cout << obj->phraseToShow[language]["panelOption3"] << std::endl;
-  std::cout << obj->phraseToShow[language]["panelOption4"] << std::endl;
-  std::cout << obj->phraseToShow[language]["panelOption5"] << std::endl;
-  std::cout << obj->phraseToShow[language]["panelOption6"] << std::endl;
-
-}
-
-void Multilingual::showInsertPanel() {
-
-  Multilingual *obj = Multilingual::Instance();
-  Word wordToInsert;
-  std::cout << obj->phraseToShow[language]["insert-dutch"] << std::endl;
-  std::cin >> wordToInsert.dutch;
-  std::cout << obj->phraseToShow[language]["insert-meaning"] << std::endl;
-  std::cin >> wordToInsert.meaning;
-  std::cout << obj->phraseToShow[language]["insert-type"] << std::endl;
-  std::cin >> wordToInsert.type;
-  std::cout << obj->phraseToShow[language]["insert-sound"] << std::endl;
-  std::cin >> wordToInsert.sound;
-  //TODO SAVE THE WORD IN CASE THE WORD DOES NOT IN DATABASE
-  std::cout << obj->phraseToShow[language]["insert-sucess"] << std::endl;
-
-}
-void Multilingual::showUpdatePanel() {
-
-  Multilingual *obj = Multilingual::Instance();
-  Word wordToUpdate;
-  std::string field;
-
-  std::cout << obj->phraseToShow[language]["update-dutch"] << std::endl;
-  std::cin >> wordToUpdate.dutch;
-  std::cout << obj->phraseToShow[language]["update-field"] << std::endl;
-  std::cin >> field;
-  //TODO SEARCH THE WORD IN DATABASE
-  std::cout << obj->phraseToShow[language]["update-sucess"] << std::endl;
-
-}
-void Multilingual::showDeletePanel() {
-
-  Multilingual *obj = Multilingual::Instance();
-  Word wordToDelete;
-  std::cout << obj->phraseToShow[language]["delete-dutch"] << std::endl;
-  std::cin >> wordToDelete.dutch;
-  //TODO SEARCH THE WORD IN DATABASE AND DELETE
-  std::cout << obj->phraseToShow[language]["delete-sucess"] << std::endl;
-
-}
-void Multilingual::showQuizPanel() {
-  Multilingual *obj = Multilingual::Instance();
-  int wordLanguage;
-  std::string dutchWord, englishWord;
-  Word quiz;
-
-  std::cout << obj->phraseToShow[language]["quiz-language"] << std::endl;
-  std::cin >> wordLanguage;
-  if (1 == wordLanguage) {
-    std::cout << obj->phraseToShow[language]["quiz"] + " english" << std::endl;
-    std::cin >> englishWord;
-    if (englishWord == quiz.meaning) {
-      std::cout << obj->phraseToShow[language]["correct"] << std::endl;
-    } else {
-      std::cout << obj->phraseToShow[language]["wrong"] << std::endl;
+  std::map<std::string, std::map<std::string, std::string>>::iterator it_language;
+  it_language = obj->phraseToShow.find(language);
+  if (obj->phraseToShow.end() != it_language) {
+    std::map<std::string, std::string>::iterator it_key;
+    it_key = it_language->second.find(key);
+    if (it_language->second.end() != it_key) {
+      phrase = it_key->second;
     }
-  } else if (2 == wordLanguage) {
-    std::cout << obj->phraseToShow[language]["quiz"] + " dutch" << std::endl;
-    std::cout << dutchWord;
-    if (dutchWord == quiz.dutch) {
-      std::cout << obj->phraseToShow[language]["correct"] << std::endl;
-      //TODO DECREASE THE PRIORITY
-    } else {
-      std::cout << obj->phraseToShow[language]["wrong"] << std::endl;
-      //TODO INCREASE THE PRIORITY
-    }
-  } else {
-    std::cout << obj->phraseToShow[language]["wrong-input"] << std::endl;
   }
-
+  return phrase;
 }
-void Multilingual::showOptionsPanel() {
 
-  Multilingual *obj = Multilingual::Instance();
-  int option, config;
+void toLowerCase(std::string word) {
 
-  std::cout << obj->phraseToShow[language]["option-0"] << std::endl;
-  std::cout << obj->phraseToShow[language]["option-1"] << std::endl;
-  std::cout << obj->phraseToShow[language]["option-2"] << std::endl;
-  std::cin >> option;
-
-  if (1 == option) {
-    std::cout << obj->phraseToShow[language]["option-1-1"] << std::endl;
-    std::cin >> config;
-    if (1 == config) {
-      //TODO CONFIGURE THE LANGUAGE
-    } else {
-
-    }
-
-  }
-  if (2 == option) {
-    std::cout << obj->phraseToShow[language]["option-2-1"] << std::endl;
-    std::cin >> config;
-    //TODO CONFIGURE QUIZ LEVEL
-
-  }
-
-}
-void Multilingual::showErrorInput(int input) {
+  std::for_each(word.begin(), word.end(), [](char &c) {
+    c = ::tolower(c);
+  });
 
 }

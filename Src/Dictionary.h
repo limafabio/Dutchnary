@@ -10,12 +10,17 @@
 class Dictionary {
 
 public:
-  std::vector<Word> words;
+
+  static Dictionary *Instance();
 
   void readWords();
-  void insertWord(Word wordToInsert);
+  bool insertWord(Word wordToInsert);
   int writeWords();
   Word searchDutchWord(std::string dutch);
+  bool wordIsDictionary(std::string dutch);
+
+private:
+  std::vector<Word> words;
 
 };
 
