@@ -60,18 +60,28 @@ Word::Word(std::string stream) {
   int index = stream.find("|");
   std::string id = stream.substr(0, index);
   setId(std::stoi(id));
-  int index2 = stream.find("|", index);
-  setType(stream.substr(index, index2));
-  index = index2;
-  index2 = stream.find("|", index);
-  setMeaning(stream.substr(index, index2));
-  index = index2;
-  index2 = stream.find("|", index);
-  setSound(stream.substr(index, index2));
-  index = index2;
-  index2 = stream.find("|", index);
-  setDutch(stream.substr(index, index2));
-  index = index2;
+  index = stream.find("|");
+
+  int index2 = stream.find("|", index + 1);
+  std::string type = stream.substr((index + 1), (index2 - index - 1));
+  setType(type);
+
+  index = index2 + 1;
+  index2 = stream.find("|", index + 1);
+  std::string meaning = stream.substr(index, (index2 - index));
+  setMeaning(meaning);
+
+  index = index2 + 1;
+  index2 = stream.find("|", index + 1);
+  std::string sound = stream.substr(index, (index2 - index));
+  setSound(sound);
+
+  index = index2 + 1;
+  index2 = stream.find("|", index + 1);
+  std::string dutch = stream.substr(index, (index2 - index));
+  setDutch(dutch);
+
+  index = index2 + 1;
   index2 = stream.find("|", index);
   //TODO SET PICTURE
 

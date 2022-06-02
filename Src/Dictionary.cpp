@@ -13,12 +13,14 @@ Dictionary *Dictionary::Instance() {
 
 void Dictionary::readWords() {
   std::string location_file = DataBase;
+  location_file.append("DataBase.txt");
   std::ifstream file(location_file);
 
   if (file.is_open()) {
     std::string line;
     while (std::getline(file, line)) {
-      words.emplace_back(line);
+      Word newWord(line);
+      words.emplace_back(newWord);
     }
     file.close();
   }
