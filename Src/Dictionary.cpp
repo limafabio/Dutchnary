@@ -29,6 +29,7 @@ void Dictionary::readWords() {
 int Dictionary::writeWords() {
 
   std::string location_file = DataBase;
+  location_file.append("DataBase.txt");
   std::fstream file;
   file.open(location_file, std::ios::out);
   for (auto &word : words) {
@@ -65,6 +66,7 @@ Word Dictionary::searchDutchWord(std::string dutch) {
   }
   return wordFound;
 }
+
 bool Dictionary::insertWord(Word wordToInsert) {
 
   Dictionary *dict = Dictionary::Instance();

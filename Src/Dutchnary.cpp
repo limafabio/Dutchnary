@@ -25,7 +25,9 @@ int main() {
     std::cin >> input;
     InterfaceScreen::optionSelect(input);
   } while (6 != input);
-  
+
+  dict->writeWords();
+
   //TODO SAVE THE DATABASE, TEST DELETE , INSERT, UPDATE
   std::cout << "Doei, Tot ziens in Nederlands !! " << std::endl;
   return 0;
