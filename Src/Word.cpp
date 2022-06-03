@@ -47,10 +47,21 @@ char *Word::getPicture() const {
 
 std::string Word::convertToString() {
 
+  //TODO CONFIGURE PICTURE
   std::string stream;
+
+  /*
   this->toLowerWord();
-  stream = std::to_string(getId()) + "|" + getType() + "|" + getMeaning() + "|" + getSound() + "|" + getDutch() + "|"
-      + getPicture();
+  std::string id = std::to_string(this->getId());
+  std::string type = this->getType();
+  std::string meaning = this->getMeaning();
+  std::string sound = this->getSound();
+  std::string dutch = this->getDutch();
+  std::string picture = this->getPicture();
+*/
+  stream =
+      std::to_string(this->getId()) + "|" + this->getType() + "|" + this->getMeaning() + "|" + this->getSound() + "|"
+          + this->getDutch() + "|";
   return stream;
 
 }
