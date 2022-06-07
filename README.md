@@ -1,6 +1,6 @@
 # Dutchnary
 
-Simple dictionary with words in english to dutch.
+Simple dictionary with words in English to Dutch, and vice-versa.
 
 Version 0.5.0
 
