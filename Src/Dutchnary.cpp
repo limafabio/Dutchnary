@@ -16,7 +16,6 @@ void clear_screen() {
 int main() {
   int n, input;
   Dictionary *dict = Dictionary::Instance();
-  //TODO READ THE DATABASE
   dict->readWords();
 
   do {

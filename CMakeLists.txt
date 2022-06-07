@@ -19,7 +19,8 @@ add_library(LibDutch STATIC ${DUTCHNARY_SOURCES})
 #target_include_directories(LibDutch PUBLIC ${JSON11_INCLUDES})
 #target_link_libraries(LibDutch ${JSON11_LIBRARIES})
 
-target_compile_definitions(LibDutch PUBLIC -DDataBase="${CmakeDataBase}")
+target_compile_definitions(LibDutch PUBLIC
+        -DDataBase="${CmakeDataBase}")
 
 set_target_properties(LibDutch PROPERTIES
         OUTPUT_NAME 'LibDutch'
