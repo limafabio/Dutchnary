@@ -54,6 +54,7 @@ int InterfaceScreen::showInsertPanel() {
   std::cout << obj->showPhrases("insert-sound") << std::endl;
   std::cin >> wordToInsert.sound;
   wordToInsert.setPriority(10);
+  wordToInsert.setId(0);
   wordToInsert.toLowerWord();
   if (false == dict->wordIsDictionary(wordToInsert.dutch)) {
     if (dict->insertWord(wordToInsert)) {
