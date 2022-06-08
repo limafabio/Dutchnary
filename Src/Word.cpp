@@ -9,6 +9,9 @@
 void Word::setId(const int i) {
   id = i;
 }
+void Word::setPriority(int i) {
+  priority = i;
+}
 void Word::setType(const std::string &t) {
   type = t;
 }
@@ -28,6 +31,9 @@ void Word::setPicture(char *p) {
 //Getter
 int Word::getId() const {
   return id;
+}
+int Word::getPriority() const {
+  return priority;
 }
 const std::string &Word::getType() const {
   return type;
@@ -49,19 +55,9 @@ std::string Word::convertToString() {
 
   //TODO CONFIGURE PICTURE
   std::string stream;
-
-  /*
-  this->toLowerWord();
-  std::string id = std::to_string(this->getId());
-  std::string type = this->getType();
-  std::string meaning = this->getMeaning();
-  std::string sound = this->getSound();
-  std::string dutch = this->getDutch();
-  std::string picture = this->getPicture();
-*/
   stream =
       std::to_string(this->getId()) + "|" + this->getType() + "|" + this->getMeaning() + "|" + this->getSound() + "|"
-          + this->getDutch() + "|";
+          + this->getDutch() + "|" + std::to_string(this->getPriority());
   return stream;
 
 }
@@ -93,7 +89,9 @@ Word::Word(std::string stream) {
   setDutch(dutch);
 
   index = index2 + 1;
-  index2 = stream.find("|", index);
+  index2 = stream.find("|", index + 1);
+  std::string priority = stream.substr(index, (index2 - index));
+  setPriority(std::stoi(priority));
   //TODO SET PICTURE
 
 }

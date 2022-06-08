@@ -40,7 +40,7 @@ void InterfaceScreen::optionSelect(int option) {
   }
 }
 
-void InterfaceScreen::showInsertPanel() {
+int InterfaceScreen::showInsertPanel() {
 
   Dictionary *dict = Dictionary::Instance();
   Multilingual *obj = Multilingual::Instance();
@@ -53,13 +53,18 @@ void InterfaceScreen::showInsertPanel() {
   std::cin >> wordToInsert.type;
   std::cout << obj->showPhrases("insert-sound") << std::endl;
   std::cin >> wordToInsert.sound;
+  wordToInsert.setPriority(10);
   wordToInsert.toLowerWord();
   if (false == dict->wordIsDictionary(wordToInsert.dutch)) {
     if (dict->insertWord(wordToInsert)) {
       std::cout << obj->showPhrases("insert-sucess") << std::endl;
+      return 0;
     }
+  } else {
+    std::cout << obj->showPhrases("insert-duplicate") << std::endl;
+    return -1;
   }
-  std::cout << obj->showPhrases("insert-duplicate") << std::endl;
+
 }
 
 void InterfaceScreen::showUpdatePanel() {

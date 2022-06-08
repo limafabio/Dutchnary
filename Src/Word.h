@@ -8,6 +8,7 @@
 class Word {
 public:
   int id;
+  int priority;
   std::string type;
   std::string meaning;
   std::string sound;
@@ -15,6 +16,7 @@ public:
   char *picture;
 
   void setId(int i);
+  void setPriority(int i);
   void setType(const std::string &t);
   void setMeaning(const std::string &m);
   void setSound(const std::string &s);
@@ -23,6 +25,7 @@ public:
   void toLowerWord();
 
   int getId() const;
+  int getPriority() const;
   const std::string &getType() const;
   const std::string &getMeaning() const;
   const std::string &getSound() const;

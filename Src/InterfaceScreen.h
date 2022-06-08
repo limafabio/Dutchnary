@@ -10,7 +10,7 @@ class InterfaceScreen {
 public:
 
   static void showPanel();
-  static void showInsertPanel();
+  static int showInsertPanel();
   static void showUpdatePanel();
   static void showDeletePanel();
   static void showQuizPanel();

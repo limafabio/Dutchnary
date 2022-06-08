@@ -13,7 +13,6 @@ Dictionary *Dictionary::Instance() {
 
 void Dictionary::readWords() {
   std::string location_file = DataBase;
-//  location_file.append("DataBase.txt");
   std::ifstream file(location_file);
 
   if (file.is_open()) {
@@ -29,7 +28,6 @@ void Dictionary::readWords() {
 int Dictionary::writeWords() {
 
   std::string location_file = DataBase;
-// location_file.append("DataBase.txt");
   std::fstream file;
   file.open(location_file, std::ios::out);
   for (auto &word : words) {
