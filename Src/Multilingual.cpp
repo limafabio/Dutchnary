@@ -34,11 +34,17 @@ Multilingual::Multilingual() {
   phraseToShow["ENGLISH"]["insert-sucess"] = "Word was insert";
   phraseToShow["ENGLISH"]["insert-duplicate"] = "Word already insert in dictionary";
 
+  phraseToShow["ENGLISH"]["update-dutch-english"] = "Please, write 1 for dutch word or 2 for english word ";
   phraseToShow["ENGLISH"]["update-dutch"] = "Please, write the word in dutch to update";
-  phraseToShow["ENGLISH"]["update-field"] = "Which field do you want update ? ";
-  phraseToShow["ENGLISH"]["update-meaning"] = "Please, write the word to update ";
+  phraseToShow["ENGLISH"]["update-meaning"] = "Please, write the word in english to update";
+  phraseToShow["ENGLISH"]["update-type"] = " Please, write the type of the word to update ";
+  phraseToShow["ENGLISH"]["update-sound"] = " Please, write the sound of the word to update ";
   phraseToShow["ENGLISH"]["update-sucess"] = "Word was update ";
   phraseToShow["ENGLISH"]["update-wrong"] = "Word was not update ";
+  phraseToShow["ENGLISH"]["update-wrong-input"] = "Wrong input ";
+  phraseToShow["ENGLISH"]["update-question-meaning"] = "Do you like update the meaning ?";
+  phraseToShow["ENGLISH"]["update-question-type"] = "Do you like update the type ?";
+  phraseToShow["ENGLISH"]["update-question-sound"] = "Do you like update the sound ?";
 
   phraseToShow["ENGLISH"]["delete-dutch"] = "Please, write the word in dutch to delete";
   phraseToShow["ENGLISH"]["delete-meaning"] = "Please, write the meaning of the word to delete";

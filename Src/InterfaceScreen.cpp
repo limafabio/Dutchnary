@@ -72,19 +72,23 @@ void InterfaceScreen::showUpdatePanel() {
 
   Multilingual *obj = Multilingual::Instance();
   Word wordToUpdate;
-  std::string field, fieldToUpdate;
+  std::string option, fieldToUpdate;
   Dictionary *dict = Dictionary::Instance();
 
-  std::cout << obj->showPhrases("update-dutch") << std::endl;
-  std::cin >> fieldToUpdate;
-  std::cout << obj->showPhrases("update-field") << std::endl;
-  std::cin >> field;
-  if (true == dict->wordIsDictionary(wordToUpdate.getDutch())) {
-    //TODO UPDATE THE WORD
-    wordToUpdate = dict->searchDutchWord(wordToUpdate.getDutch());
-    std::cout << obj->showPhrases("update-sucess") << std::endl;
+  std::cout << obj->showPhrases("update-dutch-english") << std::endl;
+  std::cin >> option;
+  if ("1" == option) {
+    std::cout << obj->showPhrases("update-dutch") << std::endl;
+    std::cin >> fieldToUpdate;
+    //TODO THIS FUNCTION
+    wordToUpdate = searchWordEnglish(fieldToUpdate);
+  } else if ("2" == option) {
+    std::cout << obj->showPhrases("update-english") << std::endl;
+    std::cin >> fieldToUpdate;
+    //TODO THIS FUNCTION
+    wordToUpdate = searchWordDutch(fieldToUpdate);
   } else {
-    std::cout << obj->showPhrases("update-wrong") << std::endl;
+    std::cout << obj->showPhrases("update-wrong-input") << std::endl;
   }
 
 }
