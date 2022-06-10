@@ -15,8 +15,10 @@ public:
 
   void readWords();
   bool insertWord(Word wordToInsert);
+  bool updateWord(Word wordToUpdate, int index);
   int writeWords();
-  Word searchDutchWord(std::string dutch);
+  int searchDutchWord(std::string dutch);
+  int searchEnglishWord(std::string english);
   bool wordIsDictionary(std::string dutch);
 
 private:

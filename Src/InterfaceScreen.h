@@ -11,7 +11,7 @@ public:
 
   static void showPanel();
   static int showInsertPanel();
-  static void showUpdatePanel();
+  static int showUpdatePanel();
   static void showDeletePanel();
   static void showQuizPanel();
   static void showOptionsPanel();

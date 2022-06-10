@@ -68,29 +68,39 @@ int InterfaceScreen::showInsertPanel() {
 
 }
 
-void InterfaceScreen::showUpdatePanel() {
+int InterfaceScreen::showUpdatePanel() {
 
   Multilingual *obj = Multilingual::Instance();
+  int indexWordUpdate;
   Word wordToUpdate;
-  std::string option, fieldToUpdate;
+  std::string option, englishWord, dutchWord;
   Dictionary *dict = Dictionary::Instance();
 
   std::cout << obj->showPhrases("update-dutch-english") << std::endl;
   std::cin >> option;
   if ("1" == option) {
     std::cout << obj->showPhrases("update-dutch") << std::endl;
-    std::cin >> fieldToUpdate;
-    //TODO THIS FUNCTION
-    wordToUpdate = searchWordEnglish(fieldToUpdate);
+    std::cin >> dutchWord;
+    indexWordUpdate = dict->searchDutchWord(dutchWord);
   } else if ("2" == option) {
-    std::cout << obj->showPhrases("update-english") << std::endl;
-    std::cin >> fieldToUpdate;
-    //TODO THIS FUNCTION
-    wordToUpdate = searchWordDutch(fieldToUpdate);
+    std::cout << obj->showPhrases("update-meaning") << std::endl;
+    std::cin >> englishWord;
+    indexWordUpdate = dict->searchEnglishWord(englishWord);
   } else {
     std::cout << obj->showPhrases("update-wrong-input") << std::endl;
+    return 1;
   }
-
+  std::cout << obj->showPhrases("update-dutch") << std::endl;
+  std::cin >> wordToUpdate.dutch;
+  std::cout << obj->showPhrases("update-meaning") << std::endl;
+  std::cin >> wordToUpdate.meaning;
+  std::cout << obj->showPhrases("update-sound") << std::endl;
+  std::cin >> wordToUpdate.sound;
+  std::cout << obj->showPhrases("update-type") << std::endl;
+  std::cin >> wordToUpdate.type;
+  wordToUpdate.setPriority(0);
+  dict->updateWord(wordToUpdate, indexWordUpdate);
+  return 0;
 }
 
 void InterfaceScreen::showDeletePanel() {

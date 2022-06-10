@@ -49,26 +49,49 @@ bool Dictionary::wordIsDictionary(std::string dutch) {
   return false;
 }
 
-Word Dictionary::searchDutchWord(std::string dutch) {
-  //TODO create a standard error,
-  if (words.empty())
-    return {};
-  Word wordFound;
+int Dictionary::searchEnglishWord(std::string english) {
+
+  int indexWord = 0;
   int sizeWords = words.size();
   for (int i = 0; i < sizeWords; i++) {
-    Word currentWord;
-    if (currentWord.getDutch() == dutch) {
-      wordFound = currentWord;
+    if (words[i].getMeaning() == english) {
+      indexWord = i;
       break;
     }
   }
-  return wordFound;
+  return indexWord;
+
+}
+
+int Dictionary::searchDutchWord(std::string dutch) {
+  //TODO create a standard error,
+  int indexWord = 0;
+  int sizeWords = words.size();
+  for (int i = 0; i < sizeWords; i++) {
+    if (words[i].getDutch() == dutch) {
+      indexWord = i;
+      break;
+    }
+  }
+  return indexWord;
 }
 
 bool Dictionary::insertWord(Word wordToInsert) {
 
   Dictionary *dict = Dictionary::Instance();
   dict->words.emplace_back(wordToInsert);
+  return true;
+
+}
+
+bool Dictionary::updateWord(Word wordToUpdate, int index) {
+  
+  Dictionary *dict = Dictionary::Instance();
+  dict->words[index].setDutch(wordToUpdate.getDutch());
+  dict->words[index].setMeaning(wordToUpdate.getMeaning());
+  dict->words[index].setSound(wordToUpdate.getSound());
+  dict->words[index].setType(wordToUpdate.getType());
+  dict->words[index].setPriority(wordToUpdate.getPriority());
   return true;
 
 }
