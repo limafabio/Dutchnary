@@ -16,6 +16,7 @@ public:
   void readWords();
   bool insertWord(Word wordToInsert);
   bool updateWord(Word wordToUpdate, int index);
+  bool deleteWord(int index);
   int writeWords();
   int searchDutchWord(std::string dutch);
   int searchEnglishWord(std::string english);

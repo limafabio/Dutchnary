@@ -106,14 +106,28 @@ int InterfaceScreen::showUpdatePanel() {
 void InterfaceScreen::showDeletePanel() {
 
   Multilingual *obj = Multilingual::Instance();
-  Word wordToDelete;
+  std::string wordToDelete;
+  int option, index;
   Dictionary *dict = Dictionary::Instance();
 
-  std::cout << obj->showPhrases("delete-dutch") << std::endl;
-  std::cin >> wordToDelete.dutch;
-  if (true == dict->wordIsDictionary(wordToDelete.getDutch())) {
-    //TODO SEARCH THE WORD IN DATABASE AND DELETE
-
+  std::cout << obj->showPhrases("delete-dutch-english") << std::endl;
+  std::cin >> option;
+  if (1 == option) {
+    std::cin >> wordToDelete;
+    if (true == dict->wordIsDictionary(wordToDelete)) {
+      index = dict->searchEnglishWord(wordToDelete);
+      dict->deleteWord(index);
+    }
+  } else {
+    if (2 == option) {
+      std::cin >> wordToDelete;
+      if (true == dict->wordIsDictionary(wordToDelete)) {
+        index = dict->searchEnglishWord(wordToDelete);
+        dict->deleteWord(index);
+      }
+    } else {
+      std::cout << obj->showPhrases("delete-wrong-option") << std::endl;
+    }
   }
   std::cout << obj->showPhrases("delete-sucess") << std::endl;
 }

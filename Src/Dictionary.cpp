@@ -85,7 +85,7 @@ bool Dictionary::insertWord(Word wordToInsert) {
 }
 
 bool Dictionary::updateWord(Word wordToUpdate, int index) {
-  
+
   Dictionary *dict = Dictionary::Instance();
   dict->words[index].setDutch(wordToUpdate.getDutch());
   dict->words[index].setMeaning(wordToUpdate.getMeaning());
@@ -94,6 +94,16 @@ bool Dictionary::updateWord(Word wordToUpdate, int index) {
   dict->words[index].setPriority(wordToUpdate.getPriority());
   return true;
 
+}
+
+bool Dictionary::deleteWord(int index) {
+  Dictionary *dict = Dictionary::Instance();
+  dict->words[index].setDutch("");
+  dict->words[index].setMeaning("");
+  dict->words[index].setSound("");
+  dict->words[index].setType("");
+  dict->words[index].setPriority(0);
+  return true;
 }
 
 
