@@ -32,7 +32,9 @@ int Dictionary::writeWords() {
   file.open(location_file, std::ios::out);
   for (auto &word : words) {
     if (file.is_open()) {
-      file << word.convertToString() << std::endl;
+      if (word.getDutch() != "") {
+        file << word.convertToString() << std::endl;
+      }
     }
   }
   file.close();
