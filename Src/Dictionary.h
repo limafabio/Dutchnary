@@ -23,6 +23,7 @@ public:
   bool wordIsDictionary(std::string dutch);
 
 private:
+  
   std::vector<Word> words;
 
 };

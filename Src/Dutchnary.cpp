@@ -27,7 +27,7 @@ int main() {
 
   dict->writeWords();
 
-  //TODO SAVE THE DATABASE, TEST DELETE , INSERT, UPDATE
+  //TODO SAVE THE DATABASE, TEST DELETE
   std::cout << "Doei, Tot ziens in Nederlands !! " << std::endl;
   return 0;
 }
