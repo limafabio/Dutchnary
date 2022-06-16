@@ -35,7 +35,7 @@ void InterfaceScreen::optionSelect(int option) {
     break;
   case 5: InterfaceScreen::showOptionsPanel();
     break;
-  default: InterfaceScreen::showErrorInput(option);
+  default: InterfaceScreen::showErrorInput(std::to_string(option));
 
   }
 }
@@ -134,7 +134,7 @@ void InterfaceScreen::showDeletePanel() {
   std::cout << obj->showPhrases("delete-sucess") << std::endl;
 }
 
-void InterfaceScreen::showErrorInput(int input) {
+void InterfaceScreen::showErrorInput(std::string input) {
 
   //TODO MAKE DEAL WITH LETTERS
   Multilingual *obj = Multilingual::Instance();

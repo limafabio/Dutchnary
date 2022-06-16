@@ -63,6 +63,7 @@ Multilingual::Multilingual() {
   phraseToShow["ENGLISH"]["option-2-2"] = "Write the level of the quizz between 0 and 5";
 
   phraseToShow["ENGLISH"]["error-1"] = "Please, write just number";
+  phraseToShow["ENGLISH"]["error-2"] = "Wrong dutch word to find";
 
   phraseToShow["ENGLISH"]["option5-1"] = "English";
   phraseToShow["ENGLISH"]["option5-2"] = "Dutch";

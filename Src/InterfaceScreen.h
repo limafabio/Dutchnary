@@ -15,7 +15,7 @@ public:
   static void showDeletePanel();
   static void showQuizPanel();
   static void showOptionsPanel();
-  static void showErrorInput(int input);
+  static void showErrorInput(std::string input);
   static void optionSelect(int option);
 
 };

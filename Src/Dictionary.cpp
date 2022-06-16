@@ -76,16 +76,22 @@ int Dictionary::searchEnglishWord(std::string english) {
 }
 
 int Dictionary::searchDutchWord(std::string dutch) {
-  //TODO create a standard error,
-  int indexWord = 0;
-  int sizeWords = words.size();
-  for (int i = 0; i < sizeWords; i++) {
-    if (words[i].getDutch() == dutch) {
-      indexWord = i;
-      break;
+  try {
+    //TODO create a standard error,
+    int indexWord = 0;
+    int sizeWords = words.size();
+    for (int i = 0; i < sizeWords; i++) {
+      if (words[i].getDutch() == dutch) {
+        indexWord = i;
+        break;
+      }
     }
+    return indexWord;
   }
-  return indexWord;
+  catch (int dutch) {
+    
+  }
+
 }
 
 bool Dictionary::insertWord(Word wordToInsert) {
