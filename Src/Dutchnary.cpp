@@ -26,8 +26,6 @@ int main() {
   } while (6 != input);
 
   dict->writeWords();
-
-  //TODO SAVE THE DATABASE, TEST DELETE
   std::cout << "Doei, Tot ziens in Nederlands !! " << std::endl;
   return 0;
 }
