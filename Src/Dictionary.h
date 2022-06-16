@@ -20,10 +20,11 @@ public:
   int writeWords();
   int searchDutchWord(std::string dutch);
   int searchEnglishWord(std::string english);
-  bool wordIsDictionary(std::string dutch);
+  bool dutchWordIsDictionary(std::string dutch);
+  bool englishWordIsDictionary(std::string english);
 
 private:
-  
+
   std::vector<Word> words;
 
 };

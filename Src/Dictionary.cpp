@@ -41,10 +41,20 @@ int Dictionary::writeWords() {
   return 0;
 }
 
-bool Dictionary::wordIsDictionary(std::string dutch) {
+bool Dictionary::dutchWordIsDictionary(std::string dutch) {
   int sizeWord = words.size();
   for (int i = 0; i < sizeWord; i++) {
     if (dutch == words[i].getDutch()) {
+      return true;
+    }
+  }
+  return false;
+}
+
+bool Dictionary::englishWordIsDictionary(std::string english) {
+  int sizeWord = words.size();
+  for (int i = 0; i < sizeWord; i++) {
+    if (english == words[i].getMeaning()) {
       return true;
     }
   }

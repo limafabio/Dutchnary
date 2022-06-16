@@ -56,7 +56,7 @@ int InterfaceScreen::showInsertPanel() {
   wordToInsert.setPriority(10);
   wordToInsert.setId(0);
   wordToInsert.toLowerWord();
-  if (false == dict->wordIsDictionary(wordToInsert.dutch)) {
+  if (false == dict->dutchWordIsDictionary(wordToInsert.dutch)) {
     if (dict->insertWord(wordToInsert)) {
       std::cout << obj->showPhrases("insert-sucess") << std::endl;
       return 0;
@@ -113,15 +113,17 @@ void InterfaceScreen::showDeletePanel() {
   std::cout << obj->showPhrases("delete-dutch-english") << std::endl;
   std::cin >> option;
   if (1 == option) {
+    std::cout << obj->showPhrases("delete-meaning") << std::endl;
     std::cin >> wordToDelete;
-    if (true == dict->wordIsDictionary(wordToDelete)) {
+    if (true == dict->englishWordIsDictionary(wordToDelete)) {
       index = dict->searchEnglishWord(wordToDelete);
       dict->deleteWord(index);
     }
   } else {
     if (2 == option) {
+      std::cout << obj->showPhrases("delete-dutch") << std::endl;
       std::cin >> wordToDelete;
-      if (true == dict->wordIsDictionary(wordToDelete)) {
+      if (true == dict->dutchWordIsDictionary(wordToDelete)) {
         index = dict->searchEnglishWord(wordToDelete);
         dict->deleteWord(index);
       }
