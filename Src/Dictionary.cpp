@@ -22,11 +22,11 @@ void Dictionary::readWords() {
       words.emplace_back(newWord);
     }
     file.close();
-  }
+  } else
+    throw "File to read Database not found";
 }
 
 int Dictionary::writeWords() {
-
   std::string location_file = DataBase;
   std::fstream file;
   file.open(location_file, std::ios::out);
@@ -35,7 +35,8 @@ int Dictionary::writeWords() {
       if (word.getDutch() != "") {
         file << word.convertToString() << std::endl;
       }
-    }
+    } else
+      throw "File to write Database not found";
   }
   file.close();
   return 0;
@@ -62,8 +63,7 @@ bool Dictionary::englishWordIsDictionary(std::string english) {
 }
 
 int Dictionary::searchEnglishWord(std::string english) {
-
-  int indexWord = 0;
+  int indexWord = -1;
   int sizeWords = words.size();
   for (int i = 0; i < sizeWords; i++) {
     if (words[i].getMeaning() == english) {
@@ -76,26 +76,18 @@ int Dictionary::searchEnglishWord(std::string english) {
 }
 
 int Dictionary::searchDutchWord(std::string dutch) {
-  try {
-    //TODO create a standard error,
-    int indexWord = 0;
-    int sizeWords = words.size();
-    for (int i = 0; i < sizeWords; i++) {
-      if (words[i].getDutch() == dutch) {
-        indexWord = i;
-        break;
-      }
+  int indexWord = -1;
+  int sizeWords = words.size();
+  for (int i = 0; i < sizeWords; i++) {
+    if (words[i].getDutch() == dutch) {
+      indexWord = i;
+      break;
     }
-    return indexWord;
   }
-  catch (int dutch) {
-    
-  }
-
+  return indexWord;
 }
 
 bool Dictionary::insertWord(Word wordToInsert) {
-
   Dictionary *dict = Dictionary::Instance();
   dict->words.emplace_back(wordToInsert);
   return true;
@@ -103,7 +95,6 @@ bool Dictionary::insertWord(Word wordToInsert) {
 }
 
 bool Dictionary::updateWord(Word wordToUpdate, int index) {
-
   Dictionary *dict = Dictionary::Instance();
   dict->words[index].setDutch(wordToUpdate.getDutch());
   dict->words[index].setMeaning(wordToUpdate.getMeaning());

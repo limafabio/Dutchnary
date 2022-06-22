@@ -99,7 +99,10 @@ int InterfaceScreen::showUpdatePanel() {
   std::cout << obj->showPhrases("update-type") << std::endl;
   std::cin >> wordToUpdate.type;
   wordToUpdate.setPriority(0);
-  dict->updateWord(wordToUpdate, indexWordUpdate);
+  if (indexWordUpdate >= 0)
+    dict->updateWord(wordToUpdate, indexWordUpdate);
+  else
+    dict->insertWord(wordToUpdate);
   return 0;
 }
 
