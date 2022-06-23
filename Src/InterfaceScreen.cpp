@@ -11,7 +11,6 @@
 #include "Dictionary.h"
 
 void InterfaceScreen::showPanel() {
-
   Multilingual *obj = Multilingual::Instance();
   std::cout << obj->showPhrases("header") << std::endl;
   std::cout << obj->showPhrases("panelOption1") << std::endl;
@@ -20,10 +19,10 @@ void InterfaceScreen::showPanel() {
   std::cout << obj->showPhrases("panelOption4") << std::endl;
   std::cout << obj->showPhrases("panelOption5") << std::endl;
   std::cout << obj->showPhrases("panelOption6") << std::endl;
-
 }
 
 void InterfaceScreen::optionSelect(int option) {
+
   switch (option) {
   case 1: InterfaceScreen::showInsertPanel();
     break;
@@ -36,7 +35,6 @@ void InterfaceScreen::optionSelect(int option) {
   case 5: InterfaceScreen::showOptionsPanel();
     break;
   default: InterfaceScreen::showErrorInput(std::to_string(option));
-
   }
 }
 
@@ -65,7 +63,6 @@ int InterfaceScreen::showInsertPanel() {
     std::cout << obj->showPhrases("insert-duplicate") << std::endl;
     return -1;
   }
-
 }
 
 int InterfaceScreen::showUpdatePanel() {
@@ -87,8 +84,7 @@ int InterfaceScreen::showUpdatePanel() {
     std::cin >> englishWord;
     indexWordUpdate = dict->searchEnglishWord(englishWord);
   } else {
-    std::cout << obj->showPhrases("update-wrong-input") << std::endl;
-    return 1;
+    throw "Wrong input for update word";
   }
   std::cout << obj->showPhrases("update-dutch") << std::endl;
   std::cin >> wordToUpdate.dutch;
@@ -131,7 +127,7 @@ void InterfaceScreen::showDeletePanel() {
         dict->deleteWord(index);
       }
     } else {
-      std::cout << obj->showPhrases("delete-wrong-option") << std::endl;
+      throw "Wrong error for delete word";
     }
   }
   std::cout << obj->showPhrases("delete-sucess") << std::endl;
@@ -163,7 +159,11 @@ void InterfaceScreen::showOptionsPanel() {
     if (1 == config) {
       //TODO CONFIGURE THE LANGUAGE
     } else {
+      if (2 == option) {
 
+      } else {
+        throw "Wrong input for options";
+      }
     }
   }
   if (2 == option) {

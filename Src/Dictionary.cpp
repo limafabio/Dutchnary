@@ -72,7 +72,6 @@ int Dictionary::searchEnglishWord(std::string english) {
     }
   }
   return indexWord;
-
 }
 
 int Dictionary::searchDutchWord(std::string dutch) {

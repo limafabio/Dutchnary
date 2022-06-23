@@ -18,9 +18,7 @@ public:
 private:
 
   Multilingual();
-
   std::map<std::string, std::map<std::string, std::string>> phraseToShow;
   static std::string language;
-
 };
 #endif //DUTCHNARY_SRC_MULTILINGUAL_H

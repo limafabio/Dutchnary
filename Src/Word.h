@@ -37,5 +37,4 @@ public:
   Word();
 
 };
-
 #endif //DUTCHNARY_WORD_H
