@@ -11,4 +11,4 @@ Functions:
 - [x] TODO Write on Database
 - [ ] TODO Configure Picture
 - [ ] TODO Set Picture
-- [ ] TODO Save the database, test delete, insert and update
+- [x] TODO Save the database, test delete, insert and update
